@@ -1,0 +1,27 @@
+.Avatar{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.Avatar img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.Post{
+    display: flex;
+    margin: 30px 0;
+    position: relative;
+}
+
+.Like{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.Text{
+    padding: 0 0 20px 0;
+}

@@ -1,5 +1,5 @@
 
-.myPosts{
+.NewPost{
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -7,22 +7,22 @@
   position: relative;
 }
 
-.myPosts span{
+.NewPost span{
   font-size: 26px;
   color: #333;
   margin: 0 0 15px 0;
 }
-.myPosts textarea{
+.NewPost textarea{
   background: #d8d8d8;
   border: none;
   height: 80px;
 }
-.myPosts button{
+.NewPost button{
   position: relative;
-  display: inline-block;
   right: 0;
   margin: 10px 0 0 0;
-  padding: 10px 20px;
+  width: 60px;
+  height: 30px;
   font-size: 16px;
   color: #fff;
   background: #2563eb;

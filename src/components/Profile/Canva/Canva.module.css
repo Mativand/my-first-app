@@ -1,0 +1,11 @@
+.imgBackground{
+  width: 100%;
+  text-align: center;
+  margin: 30px 0 0 0;
+ 
+}
+.imgBackground img{
+  width: 100%;
+  border-radius: 20px 20px 0 0 ;
+  
+}

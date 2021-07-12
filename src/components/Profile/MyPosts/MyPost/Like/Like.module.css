@@ -1,0 +1,11 @@
+
+.Like{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.Like button{
+    width: 100px;
+    height: 30px;
+}
