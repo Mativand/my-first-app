@@ -7,8 +7,8 @@ import Inform from './Inform/Inform';
 
 const Profile = () => {
   return (
-    <div className={s.content}>
-      <div className={s.contentBlock}>
+    <div>
+      <div className={s.Profile}>
         <Canva />
         <Avatar />
         <Inform />
