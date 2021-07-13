@@ -8,10 +8,12 @@
 
 }
 
-.item{
+.item a{
   color: blue;
+  text-decoration: none;
 }
 
-.item.active{
-  color: greenyellow;
+.item a.active{
+  color: gold;
+
 } 
