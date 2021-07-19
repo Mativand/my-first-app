@@ -5,14 +5,15 @@ import Avatar from './Avatar/Avatar';
 import Canva from './Canva/Canva';
 import Inform from './Inform/Inform';
 
-const Profile = () => {
+const Profile = (props) => {
+
   return (
     <div>
       <div className={s.Profile}>
         <Canva />
         <Avatar />
         <Inform />
-        <MyPosts />
+        <MyPosts posts={props.state.posts} />
       </div>
     </div>
   )

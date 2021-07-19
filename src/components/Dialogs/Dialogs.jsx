@@ -1,40 +1,36 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
-
-const DialogItem = (props) => {
-    return <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
-}
-
-const Message = (props) => {
-    return <div>{props.message}</div>
-}
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
+
+
+    let dialogElement = props.state.dialogs.map(d =>
+        <div className={s.dialog + ' ' + s.active}>
+            <DialogItem name={d.name} id={d.id} src={d.src}/>
+        </div>
+    )
+
+    let messageElement = props.state.messages.map(m => <Message message={m.message}/>)
+
+    let getTextarea = React.createRef();
+
+    let showText = () => {
+        let text = getTextarea.current.value;
+        alert(text);
+    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <div className={s.dialog + ' ' + s.active}>
-                    <DialogItem name="Ilya" id="1"/>
-                </div>
-                <div className={s.dialog + ' ' + s.active}>
-                    <DialogItem name="Sasha" id="2"/>
-                </div>
-                <div className={s.dialog + ' ' + s.active}>
-                    <DialogItem name="Yana" id="3"/>
-                </div>
-                <div className={s.dialog + ' ' + s.active}>
-                    <DialogItem name="Andrey" id="4"/>
-                </div>
-                <div className={s.dialog + ' ' + s.active}>
-                    <DialogItem name="Aleksey" id="5"/>
-                </div>
+                {dialogElement}
             </div>
             <div className={s.messages}>
                 <div className={s.message}>
-                    <Message message="Hi"/>
-                    <Message message="How work?"/>
-                    <Message message="Nice!"/>
+                    {messageElement}
+                    <textarea ref={getTextarea}></textarea>
+                    <button onClick={showText} >Get message</button>
                 </div>
 
             </div>
