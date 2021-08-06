@@ -1,9 +1,13 @@
+import React from "react";
+import {renderApp} from "../renderApp";
+
 let state = {
     profilePage: {
         posts: [
-            {message: 'Hi, how are you?', counts: '15'},
-            {message: 'It\'s my first post', counts: '16'},
+            {id: 1, message: 'Hi, how are you?', counts: '15'},
+            {id: 2, message: 'It\'s my first post', counts: '16'},
         ],
+        newPostText: '',
     },
     dialogsPage: {
         dialogs: [
@@ -23,6 +27,8 @@ let state = {
             {message: 'How work?', id: 2},
             {message: 'Nice', id: 3},
         ],
+        textMessage: '',
+
     },
     sideBar: {
         friends: [
@@ -43,6 +49,42 @@ let state = {
             },
         ]
     }
+}
+
+window.state = state;
+
+export let updatePost = (newText) => {
+
+    state.profilePage.newPostText = newText;
+    renderApp(state);
+}
+
+export let addPost = () => {
+
+    let newPost = {
+        id: 3,
+        message: state.profilePage.newPostText,
+        counts: '0',
+    }
+
+    state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    renderApp(state);
+}
+
+export let updateMessage = (text) => {
+    state.dialogsPage.textMessage = text;
+    renderApp(state);
+};
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 4,
+        message: state.dialogsPage.textMessage,
+    };
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.textMessage = '';
+    renderApp(state);
 }
 
 export default state;
