@@ -8,34 +8,26 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {addMessage} from "./redux/state";
-
 
 const App = (props) => {
     return (
         <BrowserRouter>
             <div className="wrapper-app">
                 <Header/>
-                <Navbar state = {props.state.sideBar}/>
+                <Navbar state={props.state.sideBar}/>
                 <div className="wrapper-app-content">
                     <Route path='/dialogs'
-                           render={ () =>
-                               <Dialogs
-                                   addMessage = {props.addMessage}
-                                   updateMessage = {props.updateMessage}
-                                   state = {props.state.dialogsPage}/>}/>
+                           render={() =>
+                               <Dialogs store={props.store} state={props.state.dialogsPage}/>}/>
                     <Route path='/profile'
-                           render={ () =>
-                               <Profile
-                                   state={props.state.profilePage}
-                                   addPost={props.addPost}
-                                   updatePost={props.updatePost}/>}/>
+                           render={() =>
+                               <Profile store={props.store} state={props.state.profilePage}/>}/>
                     <Route path='/news'
-                           render={ () =>  <News/>}/>
+                           render={() => <News/>}/>
                     <Route path='/music'
-                           render={ () =>  <Music/>}/>
+                           render={() => <Music/>}/>
                     <Route path='/settings'
-                           render={ () =>  <Settings/>}/>
+                           render={() => <Settings/>}/>
                 </div>
             </div>
         </BrowserRouter>

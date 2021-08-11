@@ -15,7 +15,7 @@ const Dialogs = (props) => {
     let getTextarea = React.createRef();
     const enterMessage = () => {
         let text = getTextarea.current.value;
-        props.updateMessage(text);
+        props.store.updateMessage(text);
 
     };
 
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
                 <div className={s.message}>
                     {messageElement}
                     <textarea onChange={enterMessage} ref={getTextarea} value={props.textMessage}/>
-                    <button onClick={props.addMessage} >Get message</button>
+                    <button onClick={props.store.addMessage} >Get message</button>
                 </div>
             </div>
         </div>
