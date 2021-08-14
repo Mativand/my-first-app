@@ -1,9 +1,10 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
 import s from './Profile.module.css';
 import Avatar from './Avatar/Avatar';
 import Canva from './Canva/Canva';
 import Inform from './Inform/Inform';
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+// import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
 
@@ -13,7 +14,7 @@ const Profile = (props) => {
         <Canva />
         <Avatar />
         <Inform />
-        <MyPosts profilePage={props.profilePage}  dispatch={props.dispatch}/>
+        <MyPostsContainer store={props.store} />
       </div>
     </div>
   )

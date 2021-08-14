@@ -5,25 +5,24 @@ import {addPostActionCreator, updatePostActionCreator} from "../../../redux/prof
 
 const MyPosts = (props) => {
 
-    let myPost = props.profilePage.posts.map(p => <MyPost message={p.message} counts={p.counts}/>)
+    let myPost = props.posts.map(p => <MyPost message={p.message} counts={p.counts}/>)
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator())
+    let onAddPost = () => {
+        props.addPost();
     }
 
-    const changeTextPost = () => {
+    const onChangeTextPost = () => {
         const text = newPostElement.current.value;
-        let action = updatePostActionCreator(text)
-        props.dispatch(action);
+        props.changeTextPost(text);
     };
 
     return (
         <div className={s.myPosts}>
             <span>My posts</span>
-            <textarea onChange={changeTextPost} ref={newPostElement} type="text" value={props.profilePage.newPostText}/>
-            <button onClick={addPost}>Send</button>
+            <textarea onChange={onChangeTextPost} ref={newPostElement} type="text" value={props.newPostText}/>
+            <button onClick={onAddPost}>Send</button>
             {myPost}
         </div>
     )

@@ -19,6 +19,7 @@ const profileReducer = (state = initialState, action) => {
                 message: state.newPostText,
                 counts: '0',
             }
+
             state.posts.push(newPost);
             state.newPostText = '';
             return state;
