@@ -1,7 +1,11 @@
 import React from "react";
+import dialogsReducer from "./dialogs-reducer";
+import sideBarReducer from "./sidebar-reducer";
+import profileReducer from "./profile-reducer";
+
 
 const store = {
-    state: {
+    _state: {
         profilePage: {
             posts: [
                 {id: 1, message: 'Hi, how are you?', counts: '15'},
@@ -50,36 +54,29 @@ const store = {
             ]
         }
     },
-    renderApp: () => null,
-    updatePost: (newText) => {
-        this.state.profilePage.newPostText = newText;
-        this.renderApp(this.state);
+    _callSubscriber() {
+        console.log('State changed')
     },
-    addPost: () => {
-        let newPost = {
-            id: 3,
-            message: this.state.profilePage.newPostText,
-            counts: '0',
-        }
-        this.state.profilePage.posts.push(newPost);
-        this.state.profilePage.newPostText = '';
-        this.renderApp(this.state);
+
+    getState() {
+        return this._state;
     },
-    updateMessage: (text) => {
-        this.state.dialogsPage.textMessage = text;
-        this.renderApp(this.state);
+    subscribe(observer) {
+        this._callSubscriber = observer; // наблюдатель observer, он же патерн
     },
-    addMessage: () => {
-        let newMessage = {
-            id: 4,
-            message: this.state.dialogsPage.textMessage,
-        };
-        this.state.dialogsPage.messages.push(newMessage);
-        this.state.dialogsPage.textMessage = '';
-        this.renderApp(this.state);
-    },
-    subscribe: (observer) => {
-        store.renderApp = observer; // наблюдатель observer, он же патерн
-    },
+
+    dispatch(action) {
+
+        this._state.profilePage = profileReducer (this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sideBarReducer = sideBarReducer(this._state.sideBar, action);
+
+        this._callSubscriber(this._state);
+    }
 }
+// export const addPostActionCreator = () => ({type: ADD_POST});
+// export const updatePostActionCreator = (text) => ({type: UPDATE_POST, newText: text});
+// export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+// export const enterMessageActionCreator = (text) => ({type: UPDATE_MESSAGE, text: text,})
+
 export default store;

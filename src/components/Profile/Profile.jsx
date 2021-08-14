@@ -13,7 +13,7 @@ const Profile = (props) => {
         <Canva />
         <Avatar />
         <Inform />
-        <MyPosts store={props.store}/>
+        <MyPosts profilePage={props.profilePage}  dispatch={props.dispatch}/>
       </div>
     </div>
   )
