@@ -3,7 +3,28 @@ export const enterMessageActionCreator = (text) => ({type: UPDATE_MESSAGE, text:
 const ADD_MESSAGE = "ADD-MESSAGE";
 const UPDATE_MESSAGE = "UPDATE-MESSAGE";
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+    dialogs: [
+        {
+            name: 'Ilya',
+            id: 1,
+            src: 'https://www.fonstola.ru/download.php?file=201401/1280x768/fonstola.ru-139349.jpg'
+        },
+        {name: 'Sasha', id: 2},
+        {name: 'Yana', id: 3},
+        {name: 'Andrey', id: 4},
+        {name: 'Aleksey', id: 5},
+    ],
+
+    messages: [
+        {message: 'Hi', id: 1},
+        {message: 'How work?', id: 2},
+        {message: 'Nice', id: 3},
+    ],
+    textMessage: '',
+
+}
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {

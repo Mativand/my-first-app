@@ -3,7 +3,15 @@ export const updatePostActionCreator = (text) => ({type: UPDATE_POST, newText: t
 const ADD_POST = "ADD-POST";
 const UPDATE_POST = "UPDATE-POST";
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 1, message: 'Hi, how are you?', counts: '15'},
+        {id: 2, message: 'It\'s my first post', counts: '16'},
+    ],
+    newPostText: '',
+}
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {

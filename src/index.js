@@ -3,9 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 const renderApp = (state) =>{
+
     ReactDOM.render(
         <React.StrictMode>
             <App state={state} dispatch={store.dispatch.bind(store)}
@@ -15,7 +16,10 @@ const renderApp = (state) =>{
     );
 };
 
-store.subscribe(renderApp)
+store.subscribe(() => {
+    let state = store.getState()
+    renderApp(state)
+})
 
 renderApp(store.getState());
 
