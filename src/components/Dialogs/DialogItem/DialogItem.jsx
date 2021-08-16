@@ -8,7 +8,7 @@ const DialogItem = (props) => {
 
     return (
 
-        <NavLink to={path}><img className={s.img} src={props.src}/>{props.name}</NavLink>
+        <NavLink to={path}><img className={s.img} src={props.src} id={props.id} key={props.id}/>{props.name}</NavLink>
     )
 }
 export default DialogItem;

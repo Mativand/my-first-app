@@ -5,7 +5,7 @@ import {addPostActionCreator, updatePostActionCreator} from "../../../redux/prof
 
 const MyPosts = (props) => {
 
-    let myPost = props.posts.map(p => <MyPost message={p.message} counts={p.counts}/>)
+    let myPost = props.posts.map(p => <MyPost message={p.message} counts={p.counts} key={p.id}/>)
 
     let newPostElement = React.createRef();
 

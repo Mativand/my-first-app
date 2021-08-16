@@ -7,11 +7,11 @@ const Dialogs = (props) => {
 
     let dialogElement = props.dialogs.map(d =>
         <div className={s.dialog + ' ' + s.active}>
-            <DialogItem name={d.name} id={d.id} src={d.src}/>
+            <DialogItem name={d.name} id={d.id} src={d.src} key={d.id}/>
         </div>
     )
 
-    let messageElement = props.messages.map(m => <Message message={m.message}/>)
+    let messageElement = props.messages.map(m => <Message message={m.message} key={m.id}/>)
 
     let getTextarea = React.createRef();
 

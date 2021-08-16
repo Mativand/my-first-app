@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const Friends = (props) => {
 
     let friendsElement = props.friends.map(f =>
-        <div className={s.column}>
+        <div className={s.column} key={f.id}>
             <div className={s.img}>
                 <img src={f.src}/>
             </div>
